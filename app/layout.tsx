@@ -1,22 +1,12 @@
 import type { Metadata } from "next";
-import { Inter, Plus_Jakarta_Sans } from "next/font/google";
+import { Bricolage_Grotesque } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/provider/Providers";
 
-const inter = Inter({
+const bricolage = Bricolage_Grotesque({
   subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-  preload: true,
-  fallback: ["system-ui", "arial"],
-});
-
-const plusJakarta = Plus_Jakarta_Sans({
-  subsets: ["latin"],
-  variable: "--font-jakarta",
-  display: "swap",
-  preload: true,
-  fallback: ["system-ui", "arial"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-bricolage",
 });
 
 export const metadata: Metadata = {
@@ -25,10 +15,12 @@ export const metadata: Metadata = {
     template: "%s | AI Presentation Builder",
   },
   description: "Create stunning presentations with AI-powered tools",
-  keywords: ["AI", "presentation", "slides", "builder", "design"],
+  keywords: ["AI", "presentation", "slides", "builder", "design", "PPT"],
   authors: [{ name: "Your Name" }],
   creator: "Your Company",
-  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"),
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"
+  ),
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -55,12 +47,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${inter.variable} ${plusJakarta.variable} font-sans antialiased`}
-      >
+      <body className={`${bricolage.variable} font-sans antialiased`}>
         <Providers>{children}</Providers>
       </body>
     </html>
   );
 }
-

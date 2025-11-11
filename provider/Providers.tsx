@@ -12,7 +12,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
       new QueryClient({
         defaultOptions: {
           queries: {
-            staleTime: 60 * 1000, // 1 minute
+            staleTime: 5 * 60 * 1000, // 5 minute
             refetchOnWindowFocus: false,
             retry: 1,
           },
@@ -27,9 +27,9 @@ export function Providers({ children }: { children: React.ReactNode }) {
     <QueryClientProvider client={queryClient}>
       <ThemeProvider
         attribute="class"
-        defaultTheme="dark"
-        enableSystem
-        disableTransitionOnChange
+        defaultTheme="light"
+        enableSystem={true}
+        forcedTheme="light"
       >
         {children}
         <Toaster position="top-center" richColors closeButton duration={4000} />
